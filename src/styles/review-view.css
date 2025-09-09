@@ -1,0 +1,412 @@
+/* Projects View Styles */
+.review-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.review-content {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+}
+
+.review-left-column {
+	width: 250px;
+	min-width: 200px;
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.is-phone .review-left-column {
+	max-width: 100%;
+}
+
+.review-right-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.review-sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+	height: var(--size-4-10);
+}
+
+.review-sidebar-title {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.review-multi-select-btn {
+	cursor: pointer;
+	color: var(--text-muted);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.review-multi-select-btn:hover {
+	color: var(--text-normal);
+}
+
+.review-sidebar-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--size-4-2);
+}
+
+/* Project group headers */
+.review-projects-group-header {
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--text-faint);
+	text-transform: uppercase;
+	padding: 4px 8px 4px;
+	margin-top: 12px;
+	letter-spacing: 0.5px;
+}
+
+.review-projects-group-header:first-child {
+	margin-top: 4px;
+}
+
+/* Project items in the sidebar */
+.review-project-item {
+	--icon-size: var(--size-4-4);
+	display: flex;
+	align-items: center;
+	padding: 4px 8px;
+	cursor: pointer;
+	border-radius: var(--radius-s);
+	margin-bottom: 2px;
+}
+
+.review-project-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.review-project-item.selected {
+	background-color: var(--background-modifier-active);
+}
+
+/* Projects with review settings */
+.review-project-item.has-review-settings .review-project-icon {
+	color: var(--text-accent);
+}
+
+.review-project-item.has-review-settings .review-project-name {
+	font-weight: 500;
+}
+
+/* Projects without review settings */
+.review-project-item:not(.has-review-settings) .review-project-icon {
+	color: var(--text-muted);
+}
+
+.review-project-icon {
+	margin-right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.review-project-name {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.review-task-header {
+	display: flex;
+	flex-direction: column;
+	padding: var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.is-phone .review-task-header {
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.review-header-content h3 {
+	margin: 0 0 8px 0;
+	padding: 0;
+}
+
+.review-info {
+	display: flex;
+	align-items: center;
+	color: var(--text-muted);
+	font-size: 0.9em;
+}
+
+.review-separator {
+	margin: 0 8px;
+}
+
+.review-frequency {
+	color: var(--text-accent);
+}
+
+.review-frequency:hover {
+	color: var(--text-normal);
+	text-decoration: underline;
+}
+
+.review-last-date {
+	color: var(--text-normal);
+}
+
+.review-no-settings {
+	font-style: italic;
+}
+
+/* Filter information */
+.review-filter-info {
+	margin-top: 10px;
+	padding: 6px 10px;
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-s);
+	font-size: 0.85em;
+	color: var(--text-muted);
+	border-left: 3px solid var(--text-accent);
+}
+
+.review-filter-toggle {
+	cursor: pointer;
+	text-decoration: underline;
+	color: var(--text-accent);
+	margin-left: 5px;
+}
+
+.review-filter-toggle:hover {
+	color: var(--text-accent-hover);
+}
+
+.review-task-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--size-4-2);
+}
+
+.review-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 16px;
+	text-align: center;
+}
+
+/* Review buttons */
+.review-button-container {
+	margin-top: 12px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.review-complete-btn,
+.review-configure-btn {
+	padding: 6px 12px;
+	border-radius: var(--radius-s);
+	cursor: pointer;
+	font-size: 0.9em;
+	border: 1px solid var(--background-modifier-border);
+	background-color: var(--background-secondary);
+}
+
+.review-complete-btn {
+	color: var(--text-accent);
+}
+
+.review-complete-btn:hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-accent);
+}
+
+.review-configure-btn {
+	color: var(--text-muted);
+}
+
+.review-configure-btn:hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.review-edit-btn {
+	color: var(--text-accent-hover);
+	margin-left: 8px;
+}
+
+.review-edit-btn:hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-accent-hover);
+}
+
+/* Review Configure Modal */
+.review-modal-title {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 1.5em;
+	color: var(--text-normal);
+	border-bottom: 1px solid var(--background-modifier-border);
+	padding-bottom: 10px;
+}
+
+.review-modal-form {
+	margin-bottom: 20px;
+}
+
+.review-modal-field {
+	margin-bottom: 16px;
+}
+
+.review-modal-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 4px;
+	color: var(--text-normal);
+}
+
+.review-modal-description {
+	font-size: 0.9em;
+	color: var(--text-muted);
+	margin-bottom: 8px;
+}
+
+.review-modal-select {
+	width: 100%;
+	border-radius: var(--radius-s);
+	border: 1px solid var(--background-modifier-border);
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 14px;
+}
+
+.review-modal-custom-frequency {
+	margin-top: 8px;
+}
+
+.review-modal-input {
+	width: 100%;
+	padding: 8px;
+	border-radius: var(--radius-s);
+	border: 1px solid var(--background-modifier-border);
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 14px;
+}
+
+.review-modal-last-reviewed {
+	padding: 8px;
+	font-size: 14px;
+	color: var(--text-normal);
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-s);
+}
+
+.review-modal-buttons {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 24px;
+	border-top: 1px solid var(--background-modifier-border);
+	padding-top: 16px;
+}
+
+.review-modal-button {
+	padding: 8px 16px;
+	border-radius: var(--radius-s);
+	font-size: 14px;
+	cursor: pointer;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.review-modal-button-cancel {
+	background-color: var(--background-secondary);
+	color: var(--text-muted);
+	margin-right: 8px;
+}
+
+.review-modal-button-cancel:hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.review-modal-button-save {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.review-modal-button-save:hover {
+	background-color: var(--interactive-accent-hover);
+}
+
+/* Review View - Mobile */
+.is-phone .review-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.is-phone .review-left-column {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--background-secondary);
+	width: 100%;
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+	border-right: 1px solid var(--background-modifier-border);
+}
+
+.is-phone .review-left-column.is-visible {
+	transform: translateX(0);
+}
+
+.is-phone .review-sidebar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 8px;
+}
+
+.is-phone .review-sidebar-close {
+	position: absolute;
+	top: var(--size-2-2);
+	right: 10px;
+	z-index: 15;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Add overlay when left column is visible on mobile */
+.is-phone .review-container:has(.review-left-column.is-visible)::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-modifier-cover);
+	opacity: 0.5;
+	z-index: 5;
+	transition: opacity 0.3s ease-in-out;
+}

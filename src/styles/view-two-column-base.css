@@ -1,0 +1,231 @@
+/* 
+ * 双栏视图基础样式 
+ * 这个文件提供共用的双栏布局基本样式
+ * 各具体视图（标签、项目等）可以导入这个文件并扩展自定义样式
+ */
+
+/* 通用容器 */
+.two-column-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative; /* 为绝对定位提供上下文 */
+}
+
+.two-column-content {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+}
+
+/* 通用左侧栏 */
+.two-column-left-column {
+	width: max(120px, 30%);
+	min-width: min(120px, 30%);
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+/* 通用右侧栏 */
+.two-column-right-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+/* 通用侧边栏标题区 */
+.two-column-sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+	height: var(--size-4-10);
+}
+
+.two-column-sidebar-title {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+/* 通用多选按钮样式 */
+.multi-select-mode .two-column-multi-select-btn {
+	color: var(--color-accent);
+}
+
+.two-column-multi-select-btn {
+	cursor: pointer;
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.two-column-multi-select-btn:hover {
+	color: var(--text-normal);
+}
+
+/* 侧边栏列表 */
+.two-column-sidebar-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--size-4-2);
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-2-1);
+}
+
+/* 通用列表项 */
+.two-column-list-item {
+	display: flex;
+	align-items: center;
+	padding: 4px 12px;
+	cursor: pointer;
+	border-radius: var(--radius-s);
+}
+
+.two-column-list-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.two-column-list-item.selected {
+	background-color: var(--background-modifier-active);
+}
+
+.two-column-item-icon {
+	margin-right: 8px;
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	--icon-size: var(--size-4-4);
+}
+
+.two-column-item-name {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.two-column-item-count {
+	margin-left: 8px;
+	font-size: 0.8em;
+	color: var(--text-muted);
+	background-color: var(--background-modifier-border);
+	border-radius: 10px;
+	padding: 1px 6px;
+}
+
+/* 通用任务区标题 */
+.two-column-task-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+	height: var(--size-4-10);
+}
+
+.two-column-task-title {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.two-column-task-count {
+	color: var(--text-muted);
+}
+
+/* 通用任务列表区 */
+.two-column-task-list {
+	flex: 1;
+	overflow-y: auto;
+}
+
+/* 通用空状态 */
+.two-column-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 16px;
+}
+
+/* 视图切换按钮 */
+.view-toggle-btn {
+	cursor: pointer;
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 8px;
+}
+
+.view-toggle-btn:hover {
+	color: var(--text-normal);
+}
+
+/* 移动端适配 */
+.is-phone .two-column-left-column {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--background-secondary);
+	width: 100%;
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+	border-right: 1px solid var(--background-modifier-border);
+	max-width: 100%;
+}
+
+.is-phone .two-column-left-column.is-visible {
+	transform: translateX(0);
+}
+
+.is-phone .two-column-sidebar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 8px;
+}
+
+.is-phone .two-column-sidebar-close {
+	--icon-size: var(--size-4-4);
+	position: absolute;
+	top: var(--size-4-2);
+	right: 10px;
+	z-index: 15;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 添加当左侧栏可见时的遮罩层 */
+.is-phone
+	.two-column-container:has(.two-column-left-column.is-visible)::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-modifier-cover);
+	opacity: 0.5;
+	z-index: 5;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.is-phone .two-column-sidebar-header:has(.two-column-sidebar-close) {
+	padding-right: var(--size-4-12);
+}

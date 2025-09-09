@@ -1,0 +1,248 @@
+/* 习惯编辑弹窗样式 */
+
+.habit-edit-dialog {
+	max-width: 600px;
+	width: 100%;
+}
+
+.habit-edit-dialog .modal-content {
+	padding: 20px;
+}
+
+/* 习惯类型选择器 */
+.habit-edit-dialog .habit-type-selector {
+	margin-bottom: 20px;
+}
+
+.habit-edit-dialog .habit-type-description {
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.habit-edit-dialog .habit-type-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+@media (max-width: 500px) {
+	.habit-edit-dialog .habit-type-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.habit-edit-dialog .habit-type-item {
+	display: flex;
+	padding: 12px;
+	border-radius: var(--radius-m);
+	border: 1px solid var(--background-modifier-border);
+	background-color: var(--background-secondary);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.habit-edit-dialog .habit-type-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.habit-edit-dialog .habit-type-item.selected {
+	border-color: var(--interactive-accent);
+	background-color: var(--interactive-accent-hover);
+}
+
+.habit-edit-dialog .habit-type-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--background-primary);
+	margin-right: 10px;
+}
+
+.habit-edit-dialog .habit-type-icon svg {
+	width: 20px;
+	height: 20px;
+	color: var(--text-normal);
+}
+
+.habit-edit-dialog .habit-type-text {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.habit-edit-dialog .habit-type-name {
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.habit-edit-dialog .habit-type-desc {
+	font-size: 0.85em;
+	color: var(--text-muted);
+}
+
+/* 通用表单样式 */
+.habit-edit-dialog .habit-common-form,
+.habit-edit-dialog .habit-type-form {
+	margin-bottom: 20px;
+}
+
+/* 图标预览 */
+.habit-edit-dialog .habit-icon-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	background-color: var(--background-primary);
+	border-radius: 50%;
+}
+
+.habit-edit-dialog .habit-icon-preview svg {
+	width: 18px;
+	height: 18px;
+}
+
+/* 映射编辑器 */
+.habit-edit-dialog .habit-mapping-container {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.habit-edit-dialog .habit-mapping-row {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.habit-edit-dialog .habit-mapping-key {
+	width: 80px;
+	margin-right: 5px;
+	font-size: 0.9em;
+}
+
+.habit-edit-dialog .habit-mapping-arrow {
+	margin: 0 10px;
+	color: var(--text-muted);
+}
+
+.habit-edit-dialog .habit-mapping-value {
+	flex: 1;
+	font-size: 0.9em;
+	margin-right: var(--size-4-4);
+}
+
+.habit-edit-dialog .habit-mapping-delete {
+	background: none;
+	border: none;
+	color: var(--text-error);
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 0 8px;
+}
+
+.habit-edit-dialog .habit-add-mapping-button {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	border-radius: var(--radius-s);
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+/* 事件编辑器 */
+.habit-edit-dialog .habit-events-container {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.habit-edit-dialog .habit-event-row {
+	display: flex;
+	margin-bottom: 8px;
+	gap: 5px;
+}
+
+.habit-edit-dialog .habit-event-name {
+	width: 120px;
+	font-size: 0.9em;
+}
+
+.habit-edit-dialog .habit-event-details {
+	flex: 1;
+	font-size: 0.9em;
+}
+
+.habit-edit-dialog .habit-event-property {
+	width: 120px;
+	font-size: 0.9em;
+}
+
+.habit-edit-dialog .habit-event-delete {
+	background: none;
+	border: none;
+	color: var(--text-error);
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 0 8px;
+}
+
+.habit-edit-dialog .habit-add-event-button {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	border-radius: var(--radius-s);
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+/* 按钮容器 */
+.habit-edit-dialog .habit-edit-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.habit-edit-dialog .habit-cancel-button {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: 8px 16px;
+	cursor: pointer;
+}
+
+.habit-edit-dialog .habit-save-button {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	border-radius: var(--radius-s);
+	padding: 8px 16px;
+	cursor: pointer;
+}
+
+/* 输入字段 */
+.habit-edit-dialog input[type="text"],
+.habit-edit-dialog input[type="number"] {
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: 6px;
+	color: var(--text-normal);
+}
+
+.habit-edit-dialog .habit-type-item.selected .habit-type-desc,
+.habit-edit-dialog .habit-type-item.selected .habit-type-name {
+	color: var(--text-on-accent);
+}

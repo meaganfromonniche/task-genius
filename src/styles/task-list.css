@@ -1,0 +1,331 @@
+/* Task list */
+.task-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: 0;
+}
+
+.task-item {
+	display: flex;
+	align-items: flex-start;
+	padding: 8px 16px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	cursor: pointer;
+	gap: var(--size-2-3);
+}
+
+.task-item:hover {
+	background-color: var(--background-secondary-alt);
+}
+
+.task-children-container .task-item:hover {
+	background-color: var(--background-secondary);
+}
+
+.task-item.selected {
+	background-color: var(--background-secondary-alt);
+}
+
+.task-item.task-completed .task-item-content {
+	text-decoration: line-through;
+	color: var(--text-muted);
+}
+
+.task-item .markdown-block.markdown-renderer > p:only-child {
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task-checkbox {
+	width: 16px;
+	height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-normal);
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.task-item.task-completed .task-checkbox {
+	color: var(--text-on-accent);
+}
+
+.task-item-content {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task-item-container {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Dynamic content-metadata container */
+.task-content-metadata-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: var(--size-2-2);
+	transition: all 0.2s ease;
+}
+
+/* Single line content layout - horizontal */
+.task-content-metadata-container.single-line-content {
+	flex-direction: row;
+	align-items: center;
+}
+
+.task-content-metadata-container.single-line-content .task-item-content {
+	flex: 1;
+	min-width: 0; /* Allow content to shrink */
+}
+
+.task-content-metadata-container.single-line-content .task-item-metadata {
+	flex-shrink: 0;
+	margin-top: 0;
+}
+
+/* Multi-line content layout - vertical */
+.task-content-metadata-container.multi-line-content {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.task-content-metadata-container.multi-line-content .task-item-content {
+	/* width: 100%; */
+}
+
+.task-content-metadata-container.multi-line-content .task-item-metadata {
+	margin-top: var(--size-2-2);
+}
+
+.task-item-metadata {
+	display: flex;
+	align-items: center;
+	gap: var(--size-4-2);
+	margin-top: var(--size-2-2);
+}
+
+.task-item-metadata:empty {
+	display: none;
+}
+
+.task-date {
+	font-size: var(--font-ui-small);
+	color: var(--text-faint);
+	white-space: nowrap;
+	background-color: var(--background-modifier-active-hover);
+	padding: var(--size-2-1) var(--size-2-3);
+	border-radius: var(--radius-s);
+	opacity: 0.8;
+}
+
+.task-item:hover .task-date {
+	opacity: 1;
+}
+
+.task-date::before {
+	display: inline-block;
+	margin-right: var(--size-2-2);
+	font-size: xx-small;
+	display: inline-flex;
+	transform: translateY(-1px);
+}
+
+.tg-kanban-view .task-date::before {
+	transform: translateY(0);
+}
+
+.task-date.task-due-date::before {
+	content: "📅";
+}
+
+.task-date.task-overdue {
+	color: var(--text-error);
+	font-weight: 600;
+}
+
+.task-date.task-due-today {
+	color: var(--task-doing-color);
+	font-weight: 600;
+}
+
+.task-date.task-due-soon {
+	color: var(--text-warning);
+	font-weight: 600;
+}
+
+.task-date.task-start-date::before {
+	content: "🛫";
+}
+
+.task-date.task-created-date::before {
+	content: "➕";
+}
+
+.task-date.task-scheduled-date::before {
+	content: "⏳";
+}
+
+.task-date.task-done-date::before {
+	content: "✅";
+}
+
+.task-date.task-cancelled-date::before {
+	content: "❌";
+}
+
+.task-date.task-recurrence::before {
+	content: "🔁";
+}
+
+.task-date.task-on-completion::before {
+	content: "🏁";
+}
+
+.task-project {
+	font-size: var(--font-ui-small);
+	color: var(--text-on-accent);
+	background-color: var(--color-accent);
+	border-radius: var(--radius-s);
+	padding: var(--size-2-1) var(--size-2-3);
+	white-space: nowrap;
+	opacity: 0.5;
+}
+
+.task-project:has(input) {
+	background-color: var(--background-modifier-active-hover);
+	color: var(--text-normal);
+}
+
+.task-item:hover .task-project {
+	opacity: 1;
+}
+
+.task-project::before {
+	content: "🗂️";
+	margin-right: var(--size-4-2);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: var(--font-ui-small);
+}
+
+.task-project:hover {
+	background-color: var(--background-modifier-active-hover);
+	color: var(--text-accent-hover);
+}
+
+.task-priority {
+	margin-left: 8px;
+	font-size: 0.9em;
+	white-space: nowrap;
+}
+.task-priority.priority-5 {
+	color: var(--text-error);
+	font-weight: 600;
+}
+.task-priority.priority-4 {
+	color: var(--text-warning);
+	font-weight: 600;
+}
+.task-priority.priority-3 {
+	color: var(--text-warning);
+	font-weight: 600;
+}
+.task-priority.priority-2 {
+	color: var(--text-warning);
+}
+.task-priority.priority-1 {
+	color: var(--text-accent);
+}
+
+/* New field styles */
+.task-oncompletion {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 6px;
+	margin-left: 4px;
+	border-radius: 3px;
+	font-size: var(--font-ui-small);
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+
+.task-oncompletion:hover {
+	color: var(--text-normal);
+}
+
+.task-dependson {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 6px;
+	margin-left: 4px;
+	background-color: var(--background-modifier-error);
+	border-radius: 3px;
+	font-size: var(--font-ui-small);
+	color: var(--text-error);
+	white-space: nowrap;
+}
+
+.task-dependson:hover {
+	background-color: var(--background-modifier-error-hover);
+	color: var(--text-error);
+}
+
+.task-id {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 6px;
+	margin-left: 4px;
+	background-color: var(--background-modifier-accent);
+	border-radius: 3px;
+	font-size: var(--font-ui-small);
+	color: var(--text-accent);
+	white-space: nowrap;
+}
+
+.task-id:hover {
+	background-color: var(--background-modifier-accent-hover);
+	color: var(--text-accent-hover);
+}
+
+/* Task tag styles */
+.task-tags-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--size-2-2);
+}
+
+.task-tags-container:empty {
+	display: none;
+}
+
+.task-tag {
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+	background-color: var(--background-modifier-hover);
+	border-radius: var(--radius-s);
+	padding: var(--size-2-1) var(--size-2-3);
+	white-space: nowrap;
+	opacity: 0.75;
+}
+
+.task-item:hover .task-tag {
+	opacity: 1;
+}
+
+.task-item-content p:has(img) img {
+	display: block;
+	width: min(50%, 200px);
+}

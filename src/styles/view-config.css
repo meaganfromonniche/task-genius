@@ -1,0 +1,141 @@
+.task-genius-view-config-modal {
+	width: max(70%, 500px);
+}
+
+/* Styling for the View Configuration Modal */
+.task-genius-view-config-modal .setting-item {
+	/* Add some spacing between settings in the modal */
+	margin-bottom: 15px;
+}
+
+.task-genius-view-config-modal
+	.setting-item:not(.setting-item-heading)
+	.setting-item-info {
+	/* Ensure labels are aligned well */
+	width: 120px;
+}
+
+.task-genius-view-config-modal .setting-item-control input[type="text"],
+.task-genius-view-config-modal .setting-item-control input[type="number"] {
+	/* Ensure text inputs take available width */
+	width: 100%;
+}
+
+.task-genius-view-config-modal .setting-item-description {
+	/* Style descriptions */
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+	margin-top: 2px;
+}
+
+/* Styling for the View Management List in Settings Tab */
+.view-management-list .setting-item {
+	border-bottom: 1px solid var(--background-modifier-border);
+	padding: 10px 0;
+	display: flex; /* Use flex for better control */
+	align-items: center; /* Align items vertically */
+}
+
+.view-management-list .setting-item-info {
+	flex-grow: 1; /* Allow name/description to take up space */
+	margin-right: 10px;
+}
+
+.view-management-list .setting-item-control {
+	/* Keep controls together */
+	display: flex;
+	align-items: center;
+	gap: 8px; /* Space between toggles/buttons */
+}
+
+.view-management-list .setting-item-control .button-component {
+	padding: 5px; /* Smaller padding for icon buttons */
+	height: auto;
+}
+
+.view-management-list .view-order-button,
+.view-management-list .view-delete-button {
+	/* Style action buttons */
+	margin-left: 5px;
+}
+
+.view-management-list .setting-item:last-child {
+	border-bottom: none;
+}
+
+/* Specific styling for toggles in the list */
+.view-management-list .setting-item-control .checkbox-container {
+	margin: 0; /* Remove default margins if any */
+}
+
+/* Icon Picker Menu Styles (Scoped) */
+.tg-icon-menu {
+	position: absolute;
+	z-index: 100;
+	background-color: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	box-shadow: var(--shadow-l);
+	padding: 8px;
+	max-height: 300px; /* Limit overall menu height */
+	width: 250px;
+	display: flex; /* Use flexbox */
+	flex-direction: column;
+	/* Prevent padding from affecting max-height calculation for flex children */
+	box-sizing: border-box;
+}
+
+/* Remove styles for the intermediate container */
+/* .bm-plugin-icon-menu .bm-menu-content { 
+	flex-grow: 1; 
+	overflow-y: auto; 
+	display: flex;
+	flex-direction: column;
+	min-height: 0; 
+} */
+
+.tg-icon-menu .tg-menu-search {
+	width: 100%;
+	padding: 6px 8px;
+	margin-bottom: 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	box-sizing: border-box;
+	flex-shrink: 0; /* Prevent search bar from shrinking */
+}
+
+.tg-icon-menu .tg-menu-icons {
+	flex-grow: 1; /* Icon list takes remaining vertical space */
+	overflow-y: auto; /* Make the icon list scrollable */
+	min-height: 0; /* Crucial for allowing flex child to shrink and scroll */
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+	gap: 4px;
+	/* Remove min-height previously needed for grid in flex */
+}
+
+/* Scope the clickable icon *within* the menu */
+.tg-icon-menu .clickable-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	border-radius: var(--radius-s);
+	cursor: pointer;
+	background-color: var(--background-primary);
+	border: 1px solid transparent;
+	transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.tg-icon-menu .clickable-icon:hover {
+	background-color: var(--background-modifier-hover);
+	border-color: var(--background-modifier-border-hover);
+}
+
+.tg-icon-menu .clickable-icon svg {
+	width: 20px;
+	height: 20px;
+	color: var(--text-muted);
+}

@@ -1,0 +1,210 @@
+/* task-property View Styles */
+.task-property-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.task-property-content {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+}
+
+.task-property-left-column {
+	width: max(120px, 30%);
+	min-width: min(120px, 30%);
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.is-phone .task-property-left-column {
+	max-width: 100%;
+}
+
+.task-property-right-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.task-property-sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+	height: var(--size-4-10);
+}
+
+.task-property-sidebar-title {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.multi-select-mode .task-property-multi-select-btn {
+	color: var(--color-accent);
+}
+
+.task-property-multi-select-btn {
+	cursor: pointer;
+	color: var(--text-muted);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.task-property-multi-select-btn:hover {
+	color: var(--text-normal);
+}
+
+.task-property-sidebar-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--size-4-2);
+}
+
+.task-property-list-item {
+	display: flex;
+	align-items: center;
+	padding: 4px 12px;
+	cursor: pointer;
+	border-radius: var(--radius-s);
+}
+
+.task-property-list-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-property-list-item.selected {
+	background-color: var(--background-modifier-active);
+}
+
+.task-property-icon {
+	margin-right: 8px;
+	color: var(--text-muted);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.task-property-name {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task-property-count {
+	margin-left: 8px;
+	font-size: 0.8em;
+	color: var(--text-muted);
+	background-color: var(--background-modifier-border);
+	border-radius: 10px;
+	padding: 1px 6px;
+}
+
+.task-property-task-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-4);
+	border-bottom: 1px solid var(--background-modifier-border);
+	height: var(--size-4-10);
+}
+
+.task-property-task-title {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.task-property-task-count {
+	color: var(--text-muted);
+}
+
+.task-property-task-list {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.task-property-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 16px;
+}
+
+/* task-property View - Mobile */
+.is-phone .task-property-left-column {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--background-secondary);
+	width: 100%;
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+	border-right: 1px solid var(--background-modifier-border);
+}
+
+.is-phone .task-property-left-column.is-visible {
+	transform: translateX(0);
+}
+
+.is-phone .task-property-sidebar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 8px;
+}
+
+.is-phone .task-property-sidebar-close {
+	--icon-size: var(--size-4-4);
+	position: absolute;
+	top: var(--size-4-2);
+	right: 10px;
+	z-index: 15;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Add overlay when left column is visible on mobile */
+.is-phone
+	.task-property-container:has(
+		.task-property-left-column.is-visible
+	)::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-modifier-cover);
+	opacity: 0.5;
+	z-index: 5;
+	transition: opacity 0.3s ease-in-out;
+}
+
+/* Add position relative to container for absolute positioning context */
+.is-phone .task-property-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.is-phone .task-property-sidebar-header:has(.task-property-sidebar-close) {
+	padding-right: var(--size-4-12);
+}

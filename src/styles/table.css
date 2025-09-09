@@ -1,0 +1,989 @@
+/* Task Table View Styles */
+.table-view-adapter {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+.task-table-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: var(--background-primary);
+}
+
+.task-table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	font-size: var(--font-ui-small);
+	flex: 1;
+	min-height: 0;
+	/* Ensure table takes full width even with many columns */
+	min-width: max-content;
+}
+
+/* Table wrapper for scrolling */
+.task-table-wrapper {
+	flex: 1;
+	overflow: auto;
+	min-height: 0;
+	position: relative;
+	/* Enable both horizontal and vertical scrolling */
+	overflow-x: auto;
+	overflow-y: auto;
+	/* Smooth scrolling */
+	scroll-behavior: smooth;
+}
+
+/* Header Styles */
+.task-table-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: var(--background-secondary);
+	border-bottom: 2px solid var(--background-modifier-border);
+	/* Ensure header doesn't break when scrolling horizontally */
+	min-width: max-content;
+}
+
+.task-table-header-row {
+	height: 40px;
+}
+
+.task-table-header-cell {
+	padding: 8px 12px;
+	text-align: left;
+	font-weight: 600;
+	color: var(--text-muted);
+	border-right: 1px solid var(--background-modifier-border);
+	position: relative;
+	user-select: none;
+	background-color: var(--background-secondary);
+	/* Prevent header cells from shrinking too much */
+	white-space: nowrap;
+}
+
+.task-table-header-cell:last-child {
+	border-right: none;
+}
+
+.task-table-header-cell.sortable {
+	cursor: pointer;
+}
+
+.task-table-header-cell.sortable:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px;
+}
+
+.task-table-header-title {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.task-table-sort-icon {
+	font-size: 12px;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+	display: flex;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+}
+
+.task-table-sort-icon.asc,
+.task-table-sort-icon.desc {
+	opacity: 1;
+	color: var(--text-accent);
+}
+
+.task-table-resize-handle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4px;
+	height: 100%;
+	cursor: col-resize;
+	background-color: transparent;
+	transition: background-color 0.2s;
+}
+
+.task-table-resize-handle:hover {
+	background-color: var(--text-accent);
+}
+
+/* Body Styles */
+.task-table-body {
+	background-color: var(--background-primary);
+}
+
+.task-table-row {
+	height: 40px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	transition: background-color 0.2s;
+}
+
+.task-table-row:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-row.selected {
+	background-color: var(--background-modifier-active-hover);
+}
+
+.task-table-row:nth-child(even) {
+	background-color: var(--background-secondary-alt);
+}
+
+.task-table-row:nth-child(even):hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-row:nth-child(even).selected {
+	background-color: var(--background-modifier-active-hover);
+}
+
+.task-table-cell {
+	padding: 8px 12px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.task-table-cell:last-child {
+	border-right: none;
+}
+
+.task-table-cell.editing {
+	padding: 0;
+}
+
+/* Tree View Styles */
+.task-table-tree-indent {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px; 
+}
+
+.task-table-cell:has(.task-table-expand-btn) {
+	padding-left: 0;
+}
+
+.task-table-row.task-table-subtask {
+	background-color: var(--background-secondary);
+}
+
+.task-table-expand-btn {
+	cursor: pointer;
+	user-select: none;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 2px;
+	font-size: 10px;
+	transition: background-color 0.2s;
+}
+
+.task-table-expand-btn:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-row-level-1 .task-table-cell:first-child {
+	padding-left: 32px;
+}
+
+.task-table-row-level-2 .task-table-cell:first-child {
+	padding-left: 52px;
+}
+
+.task-table-row-level-3 .task-table-cell:first-child {
+	padding-left: 72px;
+}
+
+.task-table-row-level-4 .task-table-cell:first-child {
+	padding-left: 92px;
+}
+
+.task-table-row-level-5 .task-table-cell:first-child {
+	padding-left: 112px;
+}
+
+/* Cell Type Styles */
+.task-table-text {
+	color: var(--text-normal);
+}
+
+.task-table-number {
+	text-align: right;
+	color: var(--text-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Status Cell */
+.task-table-status {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.task-table-status-icon {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+}
+
+.task-table-status-text {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task-table-status.completed .task-table-status-icon {
+	color: var(--text-success);
+}
+
+.task-table-status.in-progress .task-table-status-icon {
+	color: var(--text-warning);
+}
+
+.task-table-status.abandoned .task-table-status-icon {
+	color: var(--text-error);
+}
+
+.task-table-status.planned .task-table-status-icon {
+	color: var(--text-muted);
+}
+
+.task-table-status.not-started .task-table-status-icon {
+	color: var(--text-faint);
+}
+
+/* Priority Cell */
+.task-table-priority {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.task-table-priority.clickable-priority {
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.task-table-priority.clickable-priority:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-priority-icon {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+}
+
+.task-table-priority-icon.high {
+	color: var(--text-error);
+}
+
+.task-table-priority-icon.medium {
+	color: var(--text-warning);
+}
+
+.task-table-priority-icon.low {
+	color: var(--text-muted);
+}
+
+.task-table-priority-text {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task-table-priority-empty {
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Date Cell */
+.task-table-date {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	padding: 4px;
+	border-radius: 4px;
+}
+
+.task-table-date:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-date-text {
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+}
+
+.task-table-date-relative {
+	font-size: var(--font-ui-smaller);
+	font-weight: 500;
+}
+
+.task-table-date-relative.today {
+	color: var(--text-success);
+}
+
+.task-table-date-relative.tomorrow {
+	color: var(--text-accent);
+}
+
+.task-table-date-relative.yesterday {
+	color: var(--text-muted);
+}
+
+.task-table-date-relative.overdue {
+	color: var(--text-error);
+}
+
+.task-table-date-relative.upcoming {
+	color: var(--text-warning);
+}
+
+.task-table-date-empty {
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Tags Cell */
+.task-table-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	align-items: center;
+}
+
+.task-table-tag-chip {
+	background-color: var(--background-modifier-accent);
+	color: var(--text-accent);
+	padding: 2px 6px;
+	border-radius: 8px;
+	font-size: var(--font-ui-smaller);
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.task-table-tags-empty {
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Inline Editing Inputs */
+.task-table-text-input,
+.task-table-tags-input {
+	border: none !important;
+	background: transparent !important;
+	outline: none !important;
+	width: 100% !important;
+	padding: 0 !important;
+	font: inherit !important;
+	color: var(--text-normal) !important;
+}
+
+.task-table-text-input:focus,
+.task-table-tags-input:focus {
+	background-color: var(--background-modifier-form-field) !important;
+	border-radius: 3px !important;
+	padding: 2px 4px !important;
+}
+
+/* Task Count Icon */
+.task-count-icon {
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+}
+
+.task-table-empty-row {
+	height: 80px;
+}
+
+.task-table-empty-cell {
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+	vertical-align: middle;
+}
+
+/* Loading State */
+.task-table-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+	z-index: 100;
+}
+
+/* Resize State */
+.task-table.resizing {
+	user-select: none;
+}
+
+.task-table.resizing * {
+	cursor: col-resize !important;
+}
+
+/* Virtual scrolling styles */
+.virtual-scroll-spacer {
+	pointer-events: none;
+	visibility: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.task-table-container {
+		font-size: var(--font-ui-smaller);
+	}
+
+	.task-table-wrapper {
+		overflow-x: auto;
+	}
+
+	.task-table {
+		min-width: 800px; /* Ensure table doesn't get too narrow */
+	}
+
+	.task-table-header-cell,
+	.task-table-cell {
+		padding: 6px 8px;
+	}
+
+	.task-table-row {
+		height: 36px;
+	}
+
+	.task-table-header-row {
+		height: 36px;
+	}
+}
+
+/* Dark Mode Adjustments */
+.theme-dark .task-table-container {
+	border-color: var(--background-modifier-border);
+}
+
+.theme-dark .task-table-row:nth-child(even) {
+	background-color: var(--background-primary-alt);
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+	.task-table-container {
+		border-width: 2px;
+	}
+
+	.task-table-header-cell,
+	.task-table-cell {
+		border-width: 1px;
+	}
+
+	.task-table-row {
+		border-bottom-width: 1px;
+	}
+}
+
+/* Print Styles */
+@media print {
+	.task-table-container {
+		border: none;
+		overflow: visible;
+		height: auto;
+	}
+
+	.task-table-header {
+		position: static;
+	}
+
+	.task-table-resize-handle {
+		display: none;
+	}
+
+	.task-table-expand-btn {
+		display: none;
+	}
+}
+
+/* Virtual scrolling styles */
+.virtual-scroll-spacer-top {
+	pointer-events: none;
+}
+
+.virtual-scroll-spacer-top td {
+	padding: 0 !important;
+	border: none !important;
+	background: transparent !important;
+}
+
+/* Context menu styles */
+.task-table-context-menu {
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	z-index: 1000;
+	min-width: 120px;
+}
+
+.task-table-context-menu-item {
+	padding: 6px 12px;
+	cursor: pointer;
+	transition: background-color 0.1s ease;
+}
+
+.task-table-context-menu-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+/* Date input improvements */
+.task-table-date-input {
+	cursor: pointer;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 3px;
+	padding: 4px 8px;
+	width: 100%;
+}
+
+.task-table-date-input:hover {
+	border-color: var(--background-modifier-border-hover);
+}
+
+.task-table-date-input:focus {
+	border-color: var(--interactive-accent);
+	outline: none;
+}
+
+/* Autocomplete input improvements */
+.task-table-project-input,
+.task-table-context-input,
+.task-table-tags-input {
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 3px;
+	padding: 4px 8px;
+	width: 100%;
+}
+
+.task-table-project-input:focus,
+.task-table-context-input:focus,
+.task-table-tags-input:focus {
+	border-color: var(--interactive-accent);
+	outline: none;
+}
+
+/* Row selection improvements */
+.task-table-row.selected {
+	background-color: var(--background-modifier-hover);
+}
+
+.task-table-row:hover {
+	background-color: var(--background-modifier-hover-weak);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+	.task-table {
+		font-size: 0.9em;
+	}
+
+	th[data-column-id="rowNumber"] {
+		max-width: 40px !important;
+		min-width: 40px !important;
+		width: 40px !important;
+	}
+
+	.task-table-tree-container {
+		gap: 0 !important;
+	}
+
+	.task-table-expand-btn {
+		margin-right: 0 !important;
+	}
+
+	td[data-column-id="rowNumber"] {
+		max-width: 40px !important;
+		min-width: 40px !important;
+		width: 40px !important;
+	}
+
+	.task-table-header-cell,
+	.task-table-cell {
+		padding: 6px 4px;
+	}
+}
+
+/* Task Table Header Bar Styles */
+.task-table-header-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 6px 8px;
+	background-color: var(--background-secondary);
+	border-bottom: 1px solid var(--background-modifier-border);
+	border-radius: 6px 6px 0 0;
+	margin-bottom: 0;
+	flex-shrink: 0;
+	min-height: 40px;
+}
+
+.table-header-left {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.table-header-right {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Task Count Display */
+.task-count-container {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	background-color: var(--background-primary);
+	border-radius: 4px;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.task-count-text {
+	font-size: var(--font-ui-small);
+	font-weight: 500;
+	color: var(--text-normal);
+}
+
+/* Control Buttons */
+.table-controls-container {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.table-control-btn {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 12px;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+	transition: all 0.2s ease;
+
+	box-shadow: unset !important;
+}
+
+.table-control-btn:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.table-control-btn:active {
+	background-color: var(--background-modifier-active);
+}
+
+.tree-mode-btn.active {
+	background-color: var(--text-accent);
+	color: var(--text-on-accent);
+	border-color: var(--text-accent);
+}
+
+.tree-mode-icon,
+.refresh-icon,
+.column-icon {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tree-mode-text,
+.refresh-text,
+.column-text {
+	font-weight: 500;
+}
+
+.dropdown-arrow {
+	font-size: 10px;
+	transition: transform 0.2s ease;
+}
+
+/* Column Dropdown */
+.column-dropdown {
+	position: relative;
+}
+
+.column-dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 4px;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	box-shadow: var(--shadow-l);
+	z-index: 1000;
+	min-width: 200px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.column-toggle-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.column-toggle-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.column-toggle-checkbox {
+	margin: 0;
+	cursor: pointer;
+}
+
+.column-toggle-label {
+	flex: 1;
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+	cursor: pointer;
+	margin: 0;
+}
+
+/* Responsive Design for Header */
+@media (max-width: 768px) {
+	.task-table-header-bar {
+		flex-direction: column;
+		gap: 12px;
+		align-items: stretch;
+	}
+
+	.table-header-left {
+		display: none;
+	}
+
+	.table-header-left,
+	.table-header-right {
+		justify-content: center;
+	}
+
+	.table-controls-container {
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.table-control-btn {
+		flex: 1;
+		min-width: 100px;
+		justify-content: center;
+	}
+
+	.column-dropdown-menu {
+		right: auto;
+		left: 0;
+		width: 100%;
+	}
+}
+
+/* Dark Mode Adjustments for Header */
+.theme-dark .task-table-header-bar {
+	background-color: var(--background-secondary-alt);
+}
+
+.theme-dark .column-dropdown-menu {
+	background-color: var(--background-primary-alt);
+	border-color: var(--background-modifier-border-hover);
+}
+
+/* Custom Auto-Suggest Dropdown */
+.custom-suggest-dropdown {
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	box-shadow: var(--shadow-l);
+	z-index: 1000;
+	position: absolute;
+	max-height: 200px;
+	overflow-y: auto;
+	min-width: 150px;
+}
+
+.custom-suggest-dropdown .suggestion-item {
+	padding: 8px 12px;
+	cursor: pointer;
+	border-bottom: 1px solid var(--background-modifier-border);
+	transition: background-color 0.2s;
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+}
+
+.custom-suggest-dropdown .suggestion-item:last-child {
+	border-bottom: none;
+}
+
+.custom-suggest-dropdown .suggestion-item:hover,
+.custom-suggest-dropdown .suggestion-item.selected {
+	background-color: var(--background-modifier-hover);
+}
+
+.custom-suggest-dropdown .suggestion-item.selected {
+	color: var(--text-accent);
+}
+
+/* Enhanced Tree View Styles */
+.task-table-subtask {
+	border-left: 2px solid var(--background-modifier-border-hover);
+}
+
+.task-table-parent .task-table-cell:first-child {
+	font-weight: 500;
+}
+
+.task-table-subtask-cell {
+	border-left: 1px solid var(--background-modifier-border-focus);
+}
+
+.task-table-tree-container {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: 100%;
+}
+
+.task-table-tree-structure {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	flex-shrink: 0;
+}
+
+.task-table-tree-line {
+	font-family: monospace;
+	font-size: 12px;
+	color: var(--text-faint);
+	line-height: 1;
+	width: 16px;
+	text-align: center;
+}
+
+.task-table-tree-connector {
+	color: var(--text-muted);
+}
+
+.task-table-tree-vertical {
+	color: var(--text-faint);
+}
+
+.task-table-subtask-indicator {
+	font-size: 10px;
+	color: var(--text-accent);
+	margin-right: 6px;
+	margin-left: 4px;
+	flex-shrink: 0;
+	font-weight: bold;
+}
+
+.task-table-top-level-expand {
+	margin-right: 6px;
+}
+
+.task-table-content-wrapper {
+	flex: 1;
+	min-width: 0;
+}
+
+.task-table-child-indicator {
+	font-size: 10px;
+	color: var(--text-muted);
+	margin-left: 6px;
+	flex-shrink: 0;
+}
+
+/* Enhanced Status Cell */
+.task-table-status.clickable-status {
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.task-table-status.clickable-status:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+/* Enhanced Priority Icons */
+.task-table-priority-icon.highest {
+	color: var(--text-error);
+	filter: brightness(1.2);
+}
+
+.task-table-priority-icon.lowest {
+	color: var(--text-faint);
+}
+
+/* Tree expand button improvements */
+.task-table-expand-btn.clickable-icon {
+	opacity: 0.7;
+	transition: opacity 0.2s, background-color 0.2s;
+}
+
+.task-table-expand-btn.clickable-icon:hover {
+	opacity: 1;
+}
+
+/* Override existing tree indentation to use new system */
+.task-table-row-level-1 .task-table-cell:first-child,
+.task-table-row-level-2 .task-table-cell:first-child,
+.task-table-row-level-3 .task-table-cell:first-child,
+.task-table-row-level-4 .task-table-cell:first-child,
+.task-table-row-level-5 .task-table-cell:first-child {
+	padding-left: 12px; /* Reset to normal padding, let tree structure handle indentation */
+}

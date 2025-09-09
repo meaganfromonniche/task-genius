@@ -1,0 +1,44 @@
+/* Styles for the Reward Modal */
+.reward-modal-content {
+	text-align: center; /* Center align content */
+}
+
+.reward-modal .modal-title {
+	text-align: center;
+}
+
+.reward-name {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.reward-image-container {
+	margin-bottom: 20px;
+	display: flex; /* Use flexbox for centering */
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+}
+
+.reward-image {
+	max-width: 80%; /* Limit image width */
+	max-height: 300px; /* Limit image height */
+	border-radius: 8px; /* Optional: add rounded corners */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
+}
+
+.reward-image-error {
+	font-style: italic;
+	color: var(--text-muted); /* Use Obsidian's muted text color */
+}
+
+.reward-spacer {
+	height: 20px; /* Add some space before the buttons */
+}
+
+/* Style the buttons within the modal */
+.task-genius-reward-modal .setting-item-control {
+	display: flex;
+	justify-content: center; /* Center buttons */
+	gap: 10px; /* Add space between buttons */
+}

@@ -1,0 +1,187 @@
+/* 习惯列表容器 */
+.habit-list-container {
+	padding: 12px;
+	width: 100%;
+}
+
+.habit-settings-container {
+	padding-top: 12px;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+/* 添加按钮 */
+.habit-add-button-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 16px;
+}
+
+.habit-add-button {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border-radius: var(--radius-s);
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.habit-add-button svg {
+	width: 16px;
+	height: 16px;
+}
+
+/* 习惯列表为空状态 */
+.habit-empty-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	text-align: center;
+	padding: 20px;
+	border: 1px dashed var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background-color: var(--background-secondary);
+}
+
+.habit-empty-state h2 {
+	margin: 0 0 10px 0;
+	font-size: 1.2em;
+	color: var(--text-normal);
+}
+
+.habit-empty-state p {
+	margin: 0;
+	color: var(--text-muted);
+}
+
+/* 习惯项列表 */
+.habit-items-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+/* 习惯项 */
+.habit-item {
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	border-radius: var(--radius-m);
+	background-color: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	transition: background-color 0.2s ease;
+	cursor: pointer;
+	height: 7.5rem;
+}
+
+.habit-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+/* 习惯图标 */
+.habit-item-icon {
+	--icon-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: var(--background-primary);
+	margin-right: 12px;
+}
+
+.habit-item-icon svg {
+	color: var(--text-normal);
+}
+
+/* 习惯信息 */
+.habit-item-info {
+	flex: 1;
+	min-width: 0; /* 防止内容过长撑开布局 */
+}
+
+.habit-item-name {
+	font-weight: 600;
+	margin-bottom: 4px;
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.habit-item-description {
+	color: var(--text-muted);
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 4px;
+}
+
+.habit-item-type {
+	display: inline-block;
+	font-size: 11px;
+	padding: 2px 6px;
+	border-radius: var(--radius-s);
+	background-color: var(--background-modifier-border);
+	color: var(--text-muted);
+}
+
+/* 习惯操作按钮 */
+.habit-item-actions {
+	display: flex;
+	gap: 8px;
+	margin-left: 12px;
+}
+
+.habit-edit-button,
+.habit-delete-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: var(--background-primary);
+	cursor: pointer;
+	padding: 0;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.habit-edit-button:hover,
+.habit-delete-button:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.habit-edit-button svg,
+.habit-delete-button svg {
+	width: 16px;
+	height: 16px;
+	color: var(--text-muted);
+}
+
+.habit-delete-button:hover svg {
+	color: var(--text-error);
+}
+
+/* 习惯删除对话框样式 */
+.habit-delete-modal-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.habit-delete-button-confirm {
+	background-color: var(--text-error);
+	color: #fff;
+	border: none;
+	border-radius: var(--radius-s);
+	padding: 8px 16px;
+	cursor: pointer;
+}

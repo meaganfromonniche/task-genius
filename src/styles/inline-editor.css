@@ -1,0 +1,339 @@
+/* Inline Editor Styles - Optimized for Performance and UX */
+.inline-editor {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+/* Content Editor - More inline appearance */
+.inline-content-editor {
+	width: 100%;
+	min-height: 18px;
+	border: none;
+	border-bottom: 1px solid var(--interactive-accent);
+	border-radius: 0;
+	padding: 2px 4px;
+	background-color: transparent;
+	color: var(--text-normal);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	resize: none;
+	outline: none;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.inline-content-editor:focus {
+	border-bottom-color: var(--interactive-accent-hover);
+	background-color: var(--background-primary-alt);
+	box-shadow: 0 1px 0 0 var(--interactive-accent-hover);
+}
+
+/* Embedded Editor Styles - More seamless */
+.inline-embedded-editor-container {
+	width: 100%;
+	min-height: 18px;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.inline-embedded-editor {
+	width: 100%;
+	min-height: 18px;
+	background-color: transparent;
+}
+
+.inline-embedded-editor .cm-editor {
+	border: none !important;
+	outline: none !important;
+	background-color: transparent !important;
+	border-bottom: 1px solid var(--interactive-accent) !important;
+}
+
+.inline-embedded-editor .cm-focused {
+	outline: none !important;
+	border-bottom-color: var(--interactive-accent-hover) !important;
+	background-color: var(--background-primary-alt) !important;
+}
+
+.inline-embedded-editor .cm-content {
+	padding: 2px 4px;
+	min-height: 18px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.inline-embedded-editor .cm-line {
+	padding: 0;
+}
+
+/* Metadata Editor Container - More compact and inline */
+.inline-metadata-editor {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 6px;
+	background-color: var(--background-primary-alt);
+	border: 1px solid var(--interactive-accent);
+	border-radius: var(--radius-s);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	min-width: 120px;
+	max-width: 300px;
+	position: relative;
+	z-index: 100;
+}
+
+.inline-metadata-editor input {
+	border: unset;
+	outline: unset;
+	padding: 0;
+	height: var(--line-height);
+	background-color: transparent;
+	background: transparent;
+	border-radius: var(--radius-s);
+}
+
+.inline-metadata-editor input:focus {
+	outline: unset;
+	padding: 0;
+	background-color: transparent;
+}
+
+.inline-metadata-editor:has(input) {
+	outline: unset;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+	border-radius: unset;
+}
+
+/* Metadata Input Fields - More compact */
+.inline-project-input,
+.inline-tags-input,
+.inline-context-input,
+.inline-date-input,
+.inline-recurrence-input {
+	flex: 1;
+	padding: 2px 4px;
+	border: none;
+	border-radius: 2px;
+	background-color: transparent;
+	color: var(--text-normal);
+	font-family: inherit;
+	font-size: var(--font-ui-small);
+	outline: none;
+	min-width: 80px;
+	transition: background-color 0.15s ease;
+}
+
+.inline-project-input:focus,
+.inline-tags-input:focus,
+.inline-context-input:focus,
+.inline-date-input:focus,
+.inline-recurrence-input:focus {
+	background-color: var(--background-primary);
+	box-shadow: inset 0 0 0 1px var(--interactive-accent);
+}
+
+.inline-priority-select {
+	padding: 2px 4px;
+	border: none;
+	border-radius: 2px;
+	background-color: transparent;
+	color: var(--text-normal);
+	font-family: inherit;
+	font-size: var(--font-ui-small);
+	outline: none;
+	cursor: pointer;
+	min-width: 80px;
+}
+
+.inline-priority-select:focus {
+	background-color: var(--background-primary);
+	box-shadow: inset 0 0 0 1px var(--interactive-accent);
+}
+
+/* Add Metadata Button - More subtle */
+.add-metadata-container {
+	display: inline-flex;
+	align-items: center;
+	margin-left: 4px;
+}
+
+.task-list .task-item:not(.tree-task-item):hover .add-metadata-btn {
+	opacity: 1;
+}
+
+.tree-task-item .task-item-container:hover .add-metadata-btn {
+	opacity: 1;
+}
+
+.add-metadata-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border: none;
+	border-radius: 2px;
+	background-color: var(--background-secondary);
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: all 0.15s ease;
+	--icon-size: 10px;
+	opacity: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.add-metadata-btn:hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-normal);
+	opacity: 1;
+}
+
+.add-metadata-btn:active {
+	background-color: var(--background-modifier-active);
+	transform: scale(0.95);
+}
+
+.add-metadata-btn svg {
+	width: 10px;
+	height: 10px;
+}
+
+/* Smooth transitions for better performance */
+.inline-editor * {
+	transition: border-color 0.15s ease, background-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+/* Focus states for better accessibility */
+.inline-editor input:focus,
+.inline-editor textarea:focus,
+.inline-editor select:focus {
+	outline: none;
+}
+
+/* Editable Metadata Items - More subtle hover effects */
+.task-item-metadata .task-date,
+.task-item-metadata .task-project,
+.task-item-metadata .task-tag {
+	cursor: pointer;
+	transition: background-color 0.15s ease, transform 0.15s ease;
+	position: relative;
+}
+
+.task-item-metadata .task-date:hover,
+.task-item-metadata .task-project:hover,
+.task-item-metadata .task-tag:hover {
+	background-color: var(--background-modifier-hover);
+	transform: none;
+}
+
+/* Remove tooltip on hover for better performance */
+.task-item-metadata .task-date:hover::after,
+.task-item-metadata .task-project:hover::after,
+.task-item-metadata .task-tag:hover::after {
+	display: none;
+}
+
+/* Content Editable Hover - More subtle */
+.task-item-content {
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+
+/* Animation for smooth transitions - Optimized */
+.inline-metadata-editor {
+	animation: fadeInScale 0.15s ease-out;
+}
+
+@keyframes fadeInScale {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Prevent layout shift during editing */
+.inline-editor-placeholder {
+	min-height: 1em;
+	display: inline-block;
+}
+
+/* Responsive adjustments - Simplified */
+@media (max-width: 768px) {
+	.inline-project-input,
+	.inline-tags-input,
+	.inline-context-input,
+	.inline-recurrence-input {
+		min-width: 100px;
+		font-size: var(--font-ui-smaller);
+	}
+
+	.inline-metadata-editor {
+		max-width: 250px;
+	}
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.inline-content-editor,
+	.inline-embedded-editor .cm-editor {
+		border-bottom-width: 2px;
+	}
+
+	.inline-metadata-editor {
+		border-width: 2px;
+	}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	.inline-editor *,
+	.task-item-metadata .task-date,
+	.task-item-metadata .task-project,
+	.task-item-metadata .task-tag,
+	.task-item-content,
+	.add-metadata-btn {
+		transition: none;
+	}
+
+	.inline-metadata-editor {
+		animation: none;
+	}
+}
+
+/* New field input styles */
+.inline-dependson-input,
+.inline-id-input {
+	width: 100%;
+	min-width: 200px;
+	padding: 4px 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	font-family: inherit;
+	font-size: var(--font-ui-small);
+	outline: none;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.inline-dependson-input:focus,
+.inline-id-input:focus {
+	border-color: var(--interactive-accent);
+	box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+.inline-dependson-input::placeholder,
+.inline-id-input::placeholder {
+	color: var(--text-faint);
+}

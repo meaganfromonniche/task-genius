@@ -1,0 +1,374 @@
+/* Forecast Component Styles */
+.forecast-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	flex: 1;
+}
+
+.forecast-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.forecast-title-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.forecast-title {
+	font-weight: 600;
+	font-size: 1.2em;
+}
+
+.forecast-count {
+	font-size: 0.8em;
+	color: var(--text-muted);
+	margin-top: 4px;
+}
+
+.forecast-actions {
+	display: flex;
+	gap: var(--size-4-2);
+	align-items: center;
+	justify-content: center;
+}
+
+.forecast-settings {
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.2s ease;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.forecast-settings:hover {
+	opacity: 1;
+}
+
+.forecast-focus-bar {
+	display: flex;
+	padding: 10px 15px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	gap: 10px;
+	align-items: center;
+}
+
+.focus-input {
+	flex: 1;
+	padding: 6px 12px;
+	border-radius: 4px;
+	border: 1px solid var(--interactive-accent);
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+}
+
+.unfocus-button {
+	padding: 6px 12px;
+	border-radius: 4px;
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	cursor: pointer;
+	border: none;
+}
+
+.unfocus-button:hover {
+	background-color: var(--interactive-accent-hover);
+}
+
+/* Main content layout with two columns */
+.forecast-content {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+.forecast-left-column {
+	width: 360px;
+	min-width: 360px;
+	border-right: 1px solid var(--background-modifier-border);
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	background-color: var(--background-secondary-alt);
+}
+
+.forecast-right-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--background-primary);
+}
+
+.forecast-task-list {
+	overflow-y: auto;
+}
+
+.forecast-calendar-section {
+	padding: 10px 0;
+	margin-top: var(--size-4-4);
+	flex-shrink: 0;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Stats Bar */
+.forecast-stats {
+	display: flex;
+}
+
+.stat-item {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	position: relative;
+}
+
+.stat-item::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 10%;
+	width: 80%;
+	height: 3px;
+	background-color: transparent;
+	transition: background-color 0.2s ease;
+}
+
+.stat-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.stat-item.active::after {
+	background-color: var(--interactive-accent);
+	animation: color-pulse 1.5s infinite alternate;
+}
+
+@keyframes color-pulse {
+	0% {
+		background-color: var(--color-accent-1) !important;
+		opacity: 0.7;
+	}
+	100% {
+		background-color: var(--color-accent-2) !important;
+		opacity: 1;
+	}
+}
+
+.stat-item.tg-past-due::after {
+	background-color: var(--text-error);
+	opacity: 0.7;
+}
+
+.stat-item.tg-today::after {
+	background-color: var(--interactive-accent);
+	opacity: 0.7;
+}
+
+.stat-item.tg-future::after {
+	background-color: var(--text-accent);
+	opacity: 0.7;
+}
+
+.stat-count {
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+.stat-item.tg-past-due .stat-count {
+	color: var(--text-error);
+}
+
+.stat-label {
+	font-size: 0.8em;
+	color: var(--text-muted);
+}
+
+/* Due Soon Section */
+.forecast-due-soon-section {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: var(--size-4-3);
+}
+
+.due-soon-header {
+	font-size: 0.8em;
+	font-weight: 600;
+	padding: 5px 15px;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.due-soon-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 15px;
+	cursor: pointer;
+	border-left: 3px solid transparent;
+	transition: background-color 0.2s ease;
+}
+
+.due-soon-item:hover {
+	background-color: var(--background-modifier-hover);
+	border-left-color: var(--interactive-accent);
+}
+
+.due-soon-date {
+	font-size: 0.9em;
+}
+
+.due-soon-count {
+	font-size: 0.8em;
+	background-color: var(--background-modifier-border);
+	padding: 2px 6px;
+	border-radius: 10px;
+	color: var(--text-muted);
+}
+
+.due-soon-empty {
+	text-align: center;
+	padding: 15px;
+	color: var(--text-muted);
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+.date-section-header {
+	display: flex;
+	align-items: center;
+	padding: 8px 15px;
+	cursor: pointer;
+	border-bottom: 1px solid var(--background-modifier-border);
+	background-color: var(--background-secondary-alt);
+}
+
+.date-section-header .section-toggle {
+	margin-right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.date-section-header .section-title {
+	flex: 1;
+	font-weight: 500;
+}
+
+.date-section-header .section-count {
+	font-size: 0.8em;
+	color: var(--text-muted);
+	background-color: var(--background-modifier-border);
+	border-radius: 10px;
+	height: var(--size-4-5);
+	width: var(--size-4-5);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Overdue section styling */
+.task-date-section.overdue .date-section-header {
+	border-left: 3px solid var(--text-error);
+}
+
+.task-date-section.overdue .section-title {
+	color: var(--text-error);
+}
+
+.task-date-section.overdue .section-count {
+	background-color: var(--text-error);
+	color: white;
+}
+
+.section-tasks {
+	display: flex;
+	flex-direction: column;
+}
+
+.forecast-empty-state {
+	display: flex;
+	height: 100px;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.forecast-sidebar-toggle {
+	position: absolute;
+}
+
+.is-phone
+	.forecast-header:has(.forecast-sidebar-toggle)
+	.forecast-title-container {
+	padding-left: var(--size-4-10);
+}
+
+/* Forecast View - Mobile */
+.is-phone .forecast-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.is-phone .forecast-left-column {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--background-secondary);
+	width: 100%;
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+	border-right: 1px solid var(--background-modifier-border);
+}
+
+.is-phone .forecast-left-column.is-visible {
+	transform: translateX(0);
+}
+
+.is-phone .forecast-sidebar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 8px;
+}
+
+.is-phone .forecast-sidebar-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 15;
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: var(--background-primary);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add overlay when left column is visible on mobile */
+.is-phone .task-genius-container:has(.forecast-left-column.is-visible)::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-modifier-cover);
+	opacity: 0.5;
+	z-index: 5;
+	transition: opacity 0.3s ease-in-out;
+}

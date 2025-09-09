@@ -1,0 +1,169 @@
+.markdown-source-view.mod-cm6 .cm-gutters.task-gutter {
+	margin-inline-end: 0 !important;
+	margin-inline-start: var(--file-folding-offset);
+}
+
+.is-mobile .markdown-source-view.mod-cm6 .cm-gutters.task-gutter {
+	margin-inline-start: 0 !important;
+}
+
+.task-details-popover.tg-menu {
+	z-index: 20;
+	position: fixed;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	padding: var(--size-4-3);
+	box-shadow: var(--shadow-l);
+}
+
+.task-gutter {
+	width: 26px;
+}
+
+.task-gutter-marker {
+	cursor: pointer;
+	font-size: var(--font-smaller);
+	opacity: 0.1;
+	transition: opacity 0.2s ease;
+}
+
+.task-gutter-marker:hover {
+	opacity: 1;
+}
+
+.task-popover-content {
+	padding: var(--size-4-3);
+	max-width: 300px;
+	max-height: 400px;
+	overflow: auto;
+}
+
+.task-metadata-editor {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-2);
+	padding: var(--size-2-2);
+	height: 100%;
+}
+
+.field-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: var(--size-2-2);
+}
+
+.field-label {
+	font-size: var(--font-smallest);
+	font-weight: var(--font-bold);
+	margin-bottom: var(--size-2-1);
+	color: var(--text-muted);
+}
+
+.action-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--size-4-2);
+	gap: var(--size-4-2);
+}
+
+.action-button {
+	padding: var(--size-2-2) var(--size-4-2);
+	font-size: var(--font-smallest);
+	border-radius: var(--radius-s);
+	cursor: pointer;
+}
+
+.task-gutter-marker.clickable-icon {
+	width: 24px;
+	padding: var(--size-2-1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Tabbed Interface Styles */
+.task-details-popover .tabs-main-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%; /* Ensure it takes available width */
+}
+
+.task-details-popover .tabs-navigation {
+	display: flex;
+	margin-bottom: var(--size-4-2);
+	gap: var(--size-4-2);
+}
+
+.task-details-popover .tab-button {
+	padding: var(--size-2-2) var(--size-4-2);
+	cursor: pointer;
+	border: none;
+	background: none;
+	font-size: var(--font-ui-small); /* Adjusted for consistency */
+	color: var(--text-muted);
+	margin-bottom: -1px; /* Align with parent border */
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.task-details-popover .tab-button:hover {
+	color: var(--text-normal);
+}
+
+.task-details-popover .tab-button.active {
+	color: var(--text-on-accent);
+	font-weight: var(--font-bold);
+	background-color: var(--interactive-accent);
+}
+
+.task-details-popover .tab-pane {
+	display: none; /* Hide inactive panes by default */
+	flex-direction: column; /* Ensure content within pane flows vertically */
+	gap: var(--size-4-2); /* Add some gap between elements in the pane */
+}
+
+.task-details-popover .tab-pane.active {
+	display: flex; /* Show active pane */
+}
+
+.task-details-popover .details-status-selector,
+.task-status-editor .details-status-selector {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	margin-bottom: var(--size-4-2);
+	margin-top: var(--size-4-2);
+}
+
+.task-details-popover .quick-capture-status-selector,
+.task-status-editor .quick-capture-status-selector {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	gap: var(--size-4-3);
+}
+
+.task-details-popover .quick-capture-status-selector-label,
+.task-status-editor .quick-capture-status-selector-label {
+	display: none;
+}
+
+.modal-content.task-metadata-editor {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-2);
+}
+
+.metadata-full-container {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-2);
+}
+
+.metadata-full-container .dates-container {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-2);
+}

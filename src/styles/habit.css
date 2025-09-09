@@ -1,0 +1,512 @@
+.tg-habit-component-container {
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem; /* gap-4 */
+	padding: 1rem; /* p-4 */
+	height: 100%; /* Allow scrolling if content overflows */
+	overflow-y: auto;
+}
+
+/* === Habit List Container === */
+.habit-list-container {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 1rem; /* gap-4 */
+	width: 100%;
+}
+
+/* 小屏幕设备 */
+@media screen and (max-width: 480px) {
+	.habit-list-container {
+		padding: 0.5rem;
+		gap: 0.75rem;
+	}
+}
+
+/* 中等屏幕设备 ~768px */
+@media screen and (min-width: 768px) {
+	.habit-list-container {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 400px;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+/* 大屏幕设备 */
+@media screen and (min-width: 1024px) {
+	.habit-list-container {
+		max-width: 500px;
+	}
+}
+/* Adjust max-width/columns based on desired layout */
+
+.habit-card-wrapper {
+	width: 100%;
+	min-height: fit-content;
+}
+
+/* === Create Habit Button === */
+.habit-create-button-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+/* === Base Card Styles === */
+.habit-card {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m); /* Standard medium radius */
+	background-color: var(--background-secondary);
+	color: var(--text-normal);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column; /* Stack header and content */
+	width: 100%;
+	height: 100%;
+	min-height: fit-content;
+}
+
+.habit-card .card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	gap: 0.5rem;
+	/* border-bottom: 1px solid var(--background-modifier-border); */
+}
+
+.habit-card .card-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem; /* gap-2 */
+	font-size: var(--font-ui-large); /* Larger UI font */
+	font-weight: 600; /* font-semibold */
+	flex-grow: 1; /* Allow title to take space */
+	overflow: hidden; /* Prevent long names breaking layout */
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.habit-name.habit-name:hover {
+	/* Specificity for hover */
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.habit-card .card-content-wrapper {
+	padding: 0.75rem 1rem; /* Consistent padding */
+	flex-grow: 1; /* Allow content to fill space */
+	/* Layout specifics defined per card type */
+}
+
+/* === Daily Habit Card === */
+.daily-habit-card .card-header {
+	/* No border needed if checkbox is main action */
+	/* border-bottom: none; */
+}
+.daily-habit-card .habit-checkbox-container {
+	/* Style container if needed */
+}
+.daily-habit-card .habit-checkbox {
+	--checkbox-size: 1.25rem;
+	cursor: pointer;
+	accent-color: var(--interactive-accent); /* Style checkbox color */
+}
+.daily-habit-card .card-content-wrapper {
+	/* Contains heatmap */
+	padding: 0rem 1rem 0.75rem; /* Adjust padding around heatmap */
+}
+
+/* === Count Habit Card === */
+.count-habit-card .card-content-wrapper {
+	display: flex;
+	flex-direction: column; /* Default mobile layout */
+	gap: 0.75rem; /* Adjusted gap */
+	align-items: center;
+}
+
+.count-habit-card .habit-icon-button {
+	--icon-size: 2rem;
+	height: 4rem; /* Slightly smaller than h-16 */
+	width: 4rem;
+	aspect-ratio: 1;
+	padding: 0;
+	cursor: pointer;
+	border-radius: var(--radius-s); /* Smaller radius */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem; /* For icon */
+}
+
+.count-habit-card .habit-icon-button {
+	color: var(--icon-color);
+}
+
+.count-habit-card .habit-icon-button:hover {
+	background-color: var(--background-secondary);
+}
+
+.count-habit-card .habit-card-name {
+	font-size: var(--font-ui-large);
+	font-weight: 600;
+}
+
+.count-habit-card .habit-active-day {
+	font-size: var(--font-ui-small);
+	color: var(--text-muted);
+	font-weight: 400;
+}
+
+.count-habit-card .habit-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center text on mobile */
+	text-align: center;
+	flex-grow: 1;
+}
+.count-habit-card .habit-info h3 {
+	font-size: var(--font-ui-large);
+	font-weight: 600;
+}
+
+.count-habit-card .habit-progress-area {
+	width: 100%; /* Full width on mobile */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Tablet/Desktop layout for Count Card */
+@media (min-width: 640px) {
+	/* sm breakpoint */
+	.count-habit-card .card-content-wrapper {
+		flex-direction: row;
+		align-items: center; /* Align items vertically */
+		gap: 1rem;
+	}
+	.count-habit-card .habit-progress-area {
+		width: auto; /* Allow it to shrink */
+		min-width: 150px; /* Ensure minimum width for heatmap/progress */
+		align-items: flex-end; /* Align progress to the right */
+	}
+	.count-habit-card .habit-heatmap-small {
+		width: 100%; /* Allow heatmap to define its own width */
+	}
+}
+
+/* === Scheduled Habit Card === */
+.scheduled-habit-card .card-header {
+	padding-bottom: 0.5rem; /* pb-2 */
+}
+.scheduled-habit-card .card-content-wrapper {
+	display: flex;
+	flex-direction: column; /* Mobile default */
+	gap: 0.75rem;
+	align-items: center; /* Center on mobile */
+}
+
+.scheduled-habit-card .habit-heatmap-medium {
+	width: 100%; /* Full width heatmap on mobile */
+}
+
+.scheduled-habit-card .habit-controls {
+	width: 100%; /* Full width controls on mobile */
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center; /* Center controls on mobile */
+}
+
+.scheduled-habit-card .habit-event-dropdown {
+	width: auto; /* Auto width dropdown */
+	margin-bottom: 0.5rem;
+	width: 100%;
+}
+
+/* Tablet/Desktop layout for Scheduled Card */
+@media (min-width: 640px) {
+	.scheduled-habit-card .card-content-wrapper {
+		flex-direction: row;
+		align-items: flex-start; /* Align top */
+		justify-content: space-between;
+	}
+	.scheduled-habit-card .habit-heatmap-medium {
+		width: auto; /* Allow heatmap to shrink */
+		flex-grow: 1; /* Allow heatmap to take available space */
+		margin-right: 1rem; /* Space between heatmap and controls */
+	}
+	.scheduled-habit-card .habit-controls {
+		width: auto; /* Shrink controls */
+		min-width: 150px; /* Minimum width */
+		align-items: flex-start; /* Align controls left */
+	}
+}
+
+/* === Mapping Habit Card === */
+.mapping-habit-card .card-header {
+	padding-bottom: 0.5rem; /* pb-2 */
+}
+.mapping-habit-card .card-content-wrapper {
+	display: flex;
+	flex-direction: column; /* Mobile default */
+	gap: 0.75rem;
+	align-items: center;
+	padding-top: 0;
+	padding-bottom: 1.2rem;
+}
+.mapping-habit-card .habit-heatmap-medium {
+	width: 100%; /* Full width heatmap on mobile */
+}
+.mapping-habit-card .habit-controls {
+	width: 100%; /* Full width controls on mobile */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.mapping-habit-card .habit-mapping-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.75rem; /* Larger emoji/text */
+	padding: 0.5rem;
+	width: 100%;
+	max-width: 100px; /* Limit button width */
+	height: 3.5rem; /* h-16 equivalent */
+	border: 1px solid var(--button-secondary-border-color);
+	background-color: var(--button-secondary-bg);
+	color: var(--text-normal); /* Ensure emoji visibility */
+	cursor: pointer;
+	border-radius: var(--radius-s);
+}
+.mapping-habit-card .habit-mapping-button:hover {
+	background-color: var(--button-secondary-hover-bg);
+}
+
+.mapping-habit-card .habit-slider-setting {
+	width: 100%; /* Slider takes full width */
+	max-width: 200px; /* Limit slider width */
+}
+.mapping-habit-card .habit-slider-setting .setting-item-info {
+	display: none; /* Hide slider label */
+}
+.mapping-habit-card .habit-slider-setting .setting-item {
+	width: 100%;
+	padding: 0;
+	border: none;
+}
+.mapping-habit-card .habit-slider-setting .setting-item-control {
+	width: 100%; /* Make slider control take full width */
+}
+
+.mapping-habit-card .heatmap-md .heatmap-container-simple {
+	gap: 0.5rem;
+}
+
+/* Tablet/Desktop layout for Mapping Card */
+@media (min-width: 640px) {
+	.mapping-habit-card .card-content-wrapper {
+		flex-direction: row;
+		align-items: center; /* Center items vertically */
+		justify-content: space-between;
+	}
+	.mapping-habit-card .habit-heatmap-medium {
+		width: auto;
+		flex-grow: 1;
+		margin-right: 1rem;
+	}
+	.mapping-habit-card .habit-controls {
+		width: auto;
+		min-width: 80px; /* Width for button + slider */
+		flex-direction: column; /* Keep button above slider */
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.mapping-habit-card .habit-mapping-button {
+		width: 4rem; /* Fixed width button */
+		height: 4rem;
+	}
+	.mapping-habit-card .habit-slider-setting {
+		width: 100%; /* Slider takes width of control area */
+		max-width: none;
+	}
+}
+
+/* === Progress Bar (Common for Count/Scheduled) === */
+.habit-progress-container {
+	width: 100%;
+	height: 0.75rem; /* Slightly thicker */
+	background-color: var(--background-modifier-border);
+	border-radius: var(--radius-l); /* Pill shape */
+	overflow: hidden;
+	position: relative; /* For text overlay */
+}
+.habit-progress-bar {
+	height: 100%;
+	background-color: var(--interactive-accent);
+	border-radius: var(--radius-l);
+	transition: width 0.3s ease-in-out;
+}
+.habit-progress-container.filled .habit-progress-text {
+	mix-blend-mode: unset;
+}
+.habit-progress-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.6rem; /* Tiny text */
+	line-height: 1;
+	color: var(--text-on-accent); /* Text color on filled part */
+	mix-blend-mode: difference; /* Try to make text visible */
+	font-weight: 500;
+}
+
+/* === Heatmap Styles === */
+.tg-heatmap-root {
+	width: 100%; /* Take available width */
+}
+.heatmap-sm .heatmap-container-simple {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3px; /* Small gap between cells */
+	overflow-x: auto; /* Allow horizontal scroll if too many cells */
+	padding-bottom: 2px; /* Space for scrollbar */
+}
+
+.heatmap-md .heatmap-container-simple {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 3px; /* Small gap between cells */
+	overflow-x: auto; /* Allow horizontal scroll if too many cells */
+	padding-bottom: 2px; /* Space for scrollbar */
+	justify-items: center;
+}
+
+.heatmap-lg .heatmap-container-simple {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: var(--size-4-2); /* Small gap between cells */
+	overflow-x: auto; /* Allow horizontal scroll if too many cells */
+	padding-bottom: 2px; /* Space for scrollbar */
+	justify-items: center;
+}
+
+.heatmap-cell {
+	border-radius: var(--radius-s); /* Small radius */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	flex-shrink: 0; /* Prevent cells from shrinking */
+	background-color: var(
+		--background-modifier-border
+	); /* Default background */
+	border: 1px solid transparent; /* Border for blank/custom */
+}
+
+/* Heatmap Shapes */
+.heatmap-cell-square {
+	/* Defined by size */
+}
+.heatmap-cell-dot {
+	border-radius: 50%;
+}
+
+/* Heatmap Sizes */
+.heatmap-sm .heatmap-cell {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+.habit-heatmap-medium .heatmap-md .heatmap-cell {
+	width: 1.4rem;
+	height: 1.4rem;
+	font-size: 0.7rem;
+}
+
+.heatmap-md .heatmap-cell {
+	width: 1.1rem;
+	height: 1.1rem;
+	font-size: 0.7rem;
+} /* Mapping/Scheduled */
+.heatmap-lg .heatmap-cell {
+	width: 1.25rem;
+	height: 1.25rem;
+	font-size: 0.75rem;
+} /* Daily */
+
+/* Heatmap Variants */
+.heatmap-cell.default {
+	/* Default styles already set */
+}
+.heatmap-cell.filled {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent); /* Text on filled (e.g., emoji) */
+}
+
+.heatmap-cell.has-custom-content:has(.pie-dot-container) {
+	background: transparent;
+	border: unset;
+}
+
+/* Style for cells with custom content like PieDot or Emoji */
+.heatmap-cell.has-custom-content,
+.heatmap-cell.has-text-content {
+	background-color: var(--background-secondary); /* Use card background */
+	border-color: var(--background-modifier-border); /* Add border */
+	color: var(--text-normal); /* Ensure text/emoji is visible */
+}
+.heatmap-cell.has-text-content {
+	line-height: 1; /* Center emoji vertically */
+}
+
+/* PieDot Container */
+.pie-dot-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.pie-dot-container svg {
+	display: block; /* Remove extra space below SVG */
+}
+
+/* === Empty State === */
+.habit-empty-state {
+	text-align: center;
+	padding: 2rem 1rem;
+	color: var(--text-muted);
+}
+.habit-empty-state h2 {
+	font-size: var(--font-ui-large);
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+.habit-empty-state p {
+	font-size: var(--font-ui-normal);
+	color: var(--text-faint);
+}
+
+/* === Icons Placeholder === */
+.habit-icon {
+	display: inline-block;
+	/* width: 1em; */
+	height: 1em;
+	line-height: 1;
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+	margin-right: 0.25em;
+	--icon-size: 1.5rem;
+}

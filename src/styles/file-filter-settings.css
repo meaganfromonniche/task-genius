@@ -1,0 +1,249 @@
+/* File Filter Settings Styles */
+
+.file-filter-rules-container {
+	margin-top: 1rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	padding: 1rem;
+	background: var(--background-secondary);
+}
+
+.file-filter-rule {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.75rem;
+	margin-bottom: 0.5rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background: var(--background-primary);
+}
+
+.file-filter-rule:last-child {
+	margin-bottom: 0;
+}
+
+.file-filter-rule-type,
+.file-filter-rule-path,
+.file-filter-rule-scope,
+.file-filter-rule-enabled {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.file-filter-rule-type {
+	min-width: 80px;
+}
+
+.file-filter-rule-path {
+	flex: 1;
+}
+
+.file-filter-rule-enabled {
+	min-width: 60px;
+}
+
+.file-filter-rule label {
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.file-filter-rule input[type="text"] {
+	padding: 0.25rem 0.5rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 3px;
+	background: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 0.9rem;
+}
+
+.file-filter-rule input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+}
+
+.file-filter-rule-delete {
+	padding: 0.25rem;
+	border: none;
+	border-radius: 3px;
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 28px;
+	height: 28px;
+}
+
+.file-filter-add-rule {
+	margin-top: 1rem;
+}
+
+.file-filter-add-rule .setting-item {
+	border: none;
+	padding: 0;
+}
+
+.file-filter-add-rule .setting-item-control {
+	gap: 0.5rem;
+}
+
+.file-filter-add-rule + .setting-item {
+	border-top: none;
+}
+
+.file-filter-stats {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-secondary);
+}
+
+.file-filter-stat {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.25rem 0;
+}
+
+.file-filter-stat:not(:last-child) {
+	border-bottom: 1px solid var(--background-modifier-border);
+	margin-bottom: 0.25rem;
+	padding-bottom: 0.5rem;
+}
+
+.stat-label {
+	font-weight: 500;
+	color: var(--text-normal);
+}
+
+.stat-value {
+	font-weight: 600;
+	color: var(--interactive-accent);
+}
+
+/* Error state for statistics */
+.file-filter-stat.error {
+	background-color: var(--background-modifier-error);
+	border-left: 3px solid var(--text-error);
+}
+
+.file-filter-stat.error .stat-label {
+	color: var(--text-error);
+}
+
+/* Refresh button styling */
+.setting-item .setting-item-control button[aria-label*="refresh"] {
+	transition: transform 0.2s ease;
+}
+
+.setting-item .setting-item-control button[aria-label*="refresh"]:hover {
+	transform: rotate(90deg);
+}
+
+/* Loading state animation */
+@keyframes refresh-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.setting-item .setting-item-control button[disabled] .lucide-refresh-cw {
+	animation: refresh-spin 1s linear infinite;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+	.file-filter-rule {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.5rem;
+	}
+
+	.file-filter-rule-type,
+	.file-filter-rule-path,
+	.file-filter-rule-enabled {
+		min-width: auto;
+	}
+
+	.file-filter-rule-delete {
+		align-self: flex-end;
+		margin-top: 0.5rem;
+	}
+}
+
+/* Dark theme adjustments */
+.theme-dark .file-filter-rule input[type="text"] {
+	background: var(--background-primary-alt);
+	border-color: var(--background-modifier-border-hover);
+}
+
+.theme-dark .file-filter-rule input[type="text"]:focus {
+	border-color: var(--interactive-accent);
+	box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+/* Empty state styling */
+.file-filter-rules-container:empty::before {
+	content: "No filter rules configured. Add rules below to start filtering files and folders.";
+	display: block;
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 2rem;
+}
+
+/* Preset templates section */
+.file-filter-preset-container {
+	margin-top: 1rem;
+	padding: 1rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-secondary);
+}
+
+.file-filter-preset-container .setting-item {
+	border: none;
+	padding: 0.5rem 0;
+}
+
+.file-filter-preset-container .setting-item:not(:last-child) {
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* Preset button styling */
+.file-filter-preset-container button {
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.file-filter-preset-container button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background: var(--background-modifier-border);
+	color: var(--text-muted);
+}
+
+.file-filter-preset-container button:not(:disabled):hover {
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Success state for applied presets */
+.file-filter-preset-container button[disabled] {
+	background: var(--color-green);
+	color: var(--text-on-accent);
+	border-color: var(--color-green);
+}
+
+.theme-dark .file-filter-preset-container button[disabled] {
+	background: var(--color-green-rgb);
+	opacity: 0.8;
+}
